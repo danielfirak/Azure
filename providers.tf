@@ -9,8 +9,8 @@ terraform {
 
   # Remote state backend configuration using OIDC & Azure AD authentication
   backend "azurerm" {
-    resource_group_name  = "rg-terraform-state-uks"
-    storage_account_name = "stterraformstate01"
+    resource_group_name  = "RG.DFvLAB"
+    storage_account_name = "dftestaccount2568"
     container_name       = "tfstate"
     key                  = "prod.terraform.tfstate"
     
