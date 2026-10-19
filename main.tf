@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "this" {
-  name     = "test-rg-state"
-  location = "swedencentral"
+  name     = "df.tf-rg"
+  location = "uk-south"
 }
