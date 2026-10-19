@@ -14,7 +14,11 @@ permissions:
   contents: read
 
 jobs:
-  terraform:
+  terraform:   
+    # Optional: If you configured your Azure Federated Credential using an 'Environment', 
+    # uncomment the line below and create a GitHub Environment named 'production'.
+    # environment: production
+    environment: production
     permissions:
       id-token: write
       contents: read
@@ -22,9 +26,7 @@ jobs:
     name: "Terraform CI/CD"
     runs-on: ubuntu-latest
     
-    # Optional: If you configured your Azure Federated Credential using an 'Environment', 
-    # uncomment the line below and create a GitHub Environment named 'production'.
-    # environment: production
+
 
     steps:
       - name: Checkout Code
