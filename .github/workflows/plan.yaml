@@ -9,8 +9,7 @@ jobs:
   terraform:   
     # Optional: If you configured your Azure Federated Credential using an 'Environment', 
     # uncomment the line below and create a GitHub Environment named 'production'.
-    # environment: production
-    environment: production
+    environment: tf-plan
 
     # Required permission to generate the OIDC token from GitHub
     permissions:
