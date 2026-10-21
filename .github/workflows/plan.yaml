@@ -1,9 +1,6 @@
 name: "Terraform Plan via OIDC"
 
 on:  
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
