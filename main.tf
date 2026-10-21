@@ -5,7 +5,6 @@ resource "azurerm_resource_group" "rg1" {
     deployment = "Terraform"
     env = "devops"
     owner = "df"
-    '
   }
 }
 
