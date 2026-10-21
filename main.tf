@@ -3,7 +3,6 @@ resource "azurerm_resource_group" "rg1" {
   location = "uksouth"
   tags = {
     deployment = "Terraform"
-    env = "devops"
   }
 }
 
