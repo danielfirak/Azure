@@ -29,7 +29,7 @@ resource "azurerm_virtual_network" "tf-rs-vnet" {
 resource "azurerm_subnet" "snet-routeserver" {
   name                 = "snet-routeserver"
   virtual_network_name = azurerm_virtual_network.tf-rs-vnet.name
-  resource_group_name  = azurerm_resource_group.tf-rs-vnet.name
+  resource_group_name  = azurerm_resource_group.tf-rs-rg.name
   address_prefixes     = ["10.0.0.0/24"]
 }
 
