@@ -24,10 +24,11 @@ resource "azurerm_virtual_network" "tf-rs-vnet" {
     env = "devops"
     owner = "df"
   }
+
 }
 
 resource "azurerm_subnet" "snet-routeserver" {
-  name                 = "snet-routeserver"
+  name                 = "RouteServerSubnet"
   virtual_network_name = azurerm_virtual_network.tf-rs-vnet.name
   resource_group_name  = azurerm_resource_group.tf-rs-rg.name
   address_prefixes     = ["10.0.0.0/24"]
