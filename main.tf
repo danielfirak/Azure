@@ -43,6 +43,7 @@ resource "azurerm_public_ip" "tf-rs-pip" {
     deployment = "Terraform"
     env = "devops"
     owner = "df"
+  }
 }
 
 resource "azurerm_route_server" "tf-rs" {
