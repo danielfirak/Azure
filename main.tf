@@ -61,3 +61,11 @@ resource "azurerm_route_server" "tf-rs" {
     owner = "df"
   }
 }
+
+resource "azurerm_route_server_bgp_connection" "rs_peer" {
+  for_each = var.bgp_peers
+  name = each.key
+  router_server_id = azurerm_route_server.tf-rs.id
+  peer_asn = each.value.peer_asn
+  peer_ip = each.value.peer_ip
+}
