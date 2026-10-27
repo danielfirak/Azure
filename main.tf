@@ -39,6 +39,10 @@ resource "azurerm_public_ip" "tf-rs-pip" {
   location            = azurerm_resource_group.tf-rs-rg.location
   allocation_method   = "Static"
   sku                 = "Standard"
+  tags = {
+    deployment = "Terraform"
+    env = "devops"
+    owner = "df"
 }
 
 resource "azurerm_route_server" "tf-rs" {
