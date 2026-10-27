@@ -1,4 +1,4 @@
-name: "Terraform Plan via OIDC"
+name: "Terraform Apply via OIDC"
 
 on:  
   push:
