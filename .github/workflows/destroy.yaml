@@ -1,7 +1,8 @@
 name: "Terraform Destroy via OIDC"
 
 on:  
-inputs:
+  workflow_dispatch:
+    inputs:
       confirm_destroy:
         description: 'Type "DESTROY" to confirm teardown of dev environment'
         required: true
