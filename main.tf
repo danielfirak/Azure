@@ -24,6 +24,7 @@ resource "azurerm_virtual_network" "tf-rs-vnet" {
     env = "devops"
     owner = "df"
   }
+
 }
 
 resource "azurerm_subnet" "snet-routeserver" {
