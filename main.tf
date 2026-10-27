@@ -49,4 +49,9 @@ resource "azurerm_route_server" "tf-rs" {
   public_ip_address_id             = azurerm_public_ip.tf-rs-pip.id
   subnet_id                        = azurerm_subnet.snet-routeserver.id
   branch_to_branch_traffic_enabled = false
+  tags = {
+    deployment = "Terraform"
+    env = "devops"
+    owner = "df"
+  }
 }
