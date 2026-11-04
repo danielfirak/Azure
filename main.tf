@@ -34,18 +34,16 @@ resource "azurerm_subnet" "snet-routeserver" {
   address_prefixes     = ["10.0.0.0/24"]
 }
 
-resource "azurerm_public_ip" "tf-rs-pip" {
-  name                = "df.tf-rs-pip"
-  resource_group_name = azurerm_resource_group.tf-rs-rg.name
-  location            = azurerm_resource_group.tf-rs-rg.location
-  allocation_method   = "Static"
-  sku                 = "Standard"
-  tags = {
-    deployment = "Terraform"
-    env = "devops"
-    owner = "df"
-  }
+
+module pip {
+  source = "./pip"
+  for_each = var.pips
+  name = each.key
+  rg_name = each.value.rg_name
+  location = each.value.location
+  tags = each.value.tags
 }
+
 
 resource "azurerm_route_server" "tf-rs" {
   name                             = "df.tf-rs"
@@ -65,7 +63,7 @@ resource "azurerm_route_server" "tf-rs" {
 resource "azurerm_route_server_bgp_connection" "rs_peer" {
   for_each = var.bgp_peers
   name = each.key
-  router_server_id = azurerm_route_server.tf-rs.id
+  route_server_id = azurerm_route_server.tf-rs.id
   peer_asn = each.value.peer_asn
   peer_ip = each.value.peer_ip
 }
