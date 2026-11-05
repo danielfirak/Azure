@@ -50,7 +50,7 @@ resource "azurerm_route_server" "tf-rs" {
   resource_group_name = azurerm_resource_group.tf-rs-rg.name
   location            = azurerm_resource_group.tf-rs-rg.location
   sku                              = "Standard"
-  public_ip_address_id             = module.pip[tf-rs-pip].id
+  public_ip_address_id             = module.pip["tf-rs-pip"].id
   subnet_id                        = azurerm_subnet.snet-routeserver.id
   branch_to_branch_traffic_enabled = false
   tags = {
