@@ -6,6 +6,11 @@ variable pips {
     tags      = map(string)
   }))
 }
+variable "pip_key" {
+  description = "Key for the public IP address."
+  type        = string
+}
+
 variable "bgp_peers" {
   description = "List of BGP peers for route server."
   type        = map(object({
