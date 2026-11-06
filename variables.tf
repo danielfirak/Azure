@@ -2,7 +2,7 @@ variable pips {
   description = "Public IP address for the route server."
   type        = map(object({
     location  = string
-    tags      = map(string)
+ #   tags      = map(string)
   }))
 }
 
@@ -18,6 +18,11 @@ variable "tags" {
   description = "Tags for the route server."
   type        = map(string)
   default     = {}
+}
+
+variable "route_server_name" {
+  description = "Name of the route server."
+  type        = string
 }
 
 variable "bgp_peers" {

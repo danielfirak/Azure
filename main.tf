@@ -11,7 +11,17 @@ module pip {
   name = each.key
   rg_name = module.rg.name
   location = each.value.location
-  tags = each.value.tags
+  tags = var.tags
+}
+
+module route_server {
+  source = "./route_server"
+  name = var.route_server_name
+  rg_name = module.rg.name
+  location = module.rg.location
+  public_ip_address_id = module.pip["tf-rs-pip"].id
+  subnet_id = azurerm_subnet.snet-routeserver.id
+  tags = var.tags
 }
 
 resource "azurerm_virtual_network" "tf-rs-vnet" {
@@ -42,7 +52,7 @@ resource "azurerm_subnet" "snet-routeserver" {
 resource "azurerm_route_server" "tf-rs" {
   name                             = "df.tf-rs"
   resource_group_name = azurerm_resource_group.tf-rs-rg.name
-  location            = azurerm_resource_group.tf-rs-rg.location
+  location            = module.rg.location
   sku                              = "Standard"
   public_ip_address_id             = module.pip["tf-rs-pip"].id
   subnet_id                        = azurerm_subnet.snet-routeserver.id
