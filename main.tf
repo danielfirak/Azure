@@ -5,10 +5,19 @@ module rg {
   tags = var.tags
 }
 
+module pip {
+  source = "./pip"
+  for_each = var.pips
+  name = each.key
+  rg_name = module.rg.[var.rg_name].name
+  location = each.value.location
+  tags = each.value.tags
+}
+
 resource "azurerm_virtual_network" "tf-rs-vnet" {
   name                = "df.tf-rs-vnet"
   address_space       = ["10.0.0.0/24"]
-  resource_group_name = module.rg.[var.rg_name].name
+  resource_group_name = module.rg.name
   location            = azurerm_resource_group.tf-rs-rg.location
 
   tags = {
@@ -27,14 +36,7 @@ resource "azurerm_subnet" "snet-routeserver" {
 }
 
 
-module pip {
-  source = "./pip"
-  for_each = var.pips
-  name = each.key
-  rg_name = module.rg.[var.rg_name].name
-  location = each.value.location
-  tags = each.value.tags
-}
+
 
 
 resource "azurerm_route_server" "tf-rs" {
