@@ -1,22 +1,14 @@
-resource "azurerm_resource_group" "rg1" {
-  name     = "df.tf-rg"
-  location = "uksouth"
-  tags = {
-    deployment = "Terraform"
-    env = "devops"
-    owner = "df"
-  }
-}
-
-resource "azurerm_resource_group" "tf-rs-rg" {
-  name     = "df.tf-rs-rg"
-  location = "uksouth"
+module rg {
+  source = "./rg"
+  name = var.rg_name
+  location = var.location
+  tags = var.tags
 }
 
 resource "azurerm_virtual_network" "tf-rs-vnet" {
   name                = "df.tf-rs-vnet"
   address_space       = ["10.0.0.0/24"]
-  resource_group_name = azurerm_resource_group.tf-rs-rg.name
+  resource_group_name = module.rg.[var.rg_name].name
   location            = azurerm_resource_group.tf-rs-rg.location
 
   tags = {
@@ -39,7 +31,7 @@ module pip {
   source = "./pip"
   for_each = var.pips
   name = each.key
-  rg_name = each.value.rg_name
+  rg_name = module.rg.[var.rg_name].name
   location = each.value.location
   tags = each.value.tags
 }

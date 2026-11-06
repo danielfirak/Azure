@@ -1,3 +1,10 @@
+rg_name = "df.tf-rg"
+location = "uksouth"
+tags = {
+   owner = "owner"
+   deployment = "terraformenvironment"
+}
+
 pips = {
    tf-rs-pip = { rg_name = "df.tf-rg", location = "uksouth", tags ={ owner = "owner", deployment = "terraformenvironment" } }
 }
