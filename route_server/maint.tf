@@ -1,6 +1,6 @@
 resource "azurerm_route_server" "this" {
   name                             = var.name
-  resource_group_name              = var.resource_group_name
+  resource_group_name              = var.rg_name
   location                         = var.location
   sku                              = "Standard"
   subnet_id                        = var.subnet_id

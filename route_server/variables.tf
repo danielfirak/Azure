@@ -3,7 +3,7 @@ variable "name" {
   description = "The name of the Azure Route Server."
 }
 
-variable "resource_group_name" {
+variable "rg_name" {
   type        = string
   description = "The name of the resource group where the Route Server will be deployed."
 }
