@@ -1,3 +1,4 @@
+#Create a resource group
 module rg {
   source = "./rg"
   name = var.rg_name
@@ -5,6 +6,7 @@ module rg {
   tags = var.tags
 }
 
+#Create a public IP for the route server
 module pip {
   source = "./pip"
   for_each = var.pips
@@ -14,6 +16,7 @@ module pip {
   tags = var.tags
 }
 
+#Create a route server
 module route_server {
   source = "./route_server"
   name = var.route_server_name
@@ -24,45 +27,22 @@ module route_server {
   tags = var.tags
 }
 
+#Create a virtual network and subnet for the route server
 resource "azurerm_virtual_network" "tf-rs-vnet" {
   name                = "df.tf-rs-vnet"
   address_space       = ["10.0.0.0/24"]
   resource_group_name = module.rg.name
-  location            = azurerm_resource_group.tf-rs-rg.location
-
-  tags = {
-    deployment = "Terraform"
-    env = "devops"
-    owner = "df"
-  }
+  location            = module.rg.location
+  tags = var.tags
 
 }
-
 resource "azurerm_subnet" "snet-routeserver" {
   name                 = "RouteServerSubnet"
   virtual_network_name = azurerm_virtual_network.tf-rs-vnet.name
-  resource_group_name  = azurerm_resource_group.tf-rs-rg.name
+  resource_group_name  = module.rg.name
   address_prefixes     = ["10.0.0.0/24"]
 }
 
-
-
-
-
-resource "azurerm_route_server" "tf-rs" {
-  name                             = "df.tf-rs"
-  resource_group_name = azurerm_resource_group.tf-rs-rg.name
-  location            = module.rg.location
-  sku                              = "Standard"
-  public_ip_address_id             = module.pip["tf-rs-pip"].id
-  subnet_id                        = azurerm_subnet.snet-routeserver.id
-  branch_to_branch_traffic_enabled = false
-  tags = {
-    deployment = "Terraform"
-    env = "devops"
-    owner = "df"
-  }
-}
 
 resource "azurerm_route_server_bgp_connection" "rs_peer" {
   for_each = var.bgp_peers
