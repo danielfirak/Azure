@@ -9,7 +9,7 @@ module pip {
   source = "./pip"
   for_each = var.pips
   name = each.key
-  rg_name = module.rg.[var.rg_name].name
+  rg_name = module.rg.name
   location = each.value.location
   tags = each.value.tags
 }
