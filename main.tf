@@ -24,6 +24,7 @@ module route_server {
   location = module.rg.location
   public_ip_address_id = module.pip["tf-rs-pip"].id
   subnet_id = azurerm_subnet.snet-routeserver.id
+  bgp_connections = var.bgp_peers
   tags = var.tags
 }
 
