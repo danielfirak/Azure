@@ -47,7 +47,7 @@ resource "azurerm_subnet" "snet-routeserver" {
 resource "azurerm_route_server_bgp_connection" "rs_peer" {
   for_each = var.bgp_peers
   name = each.key
-  route_server_id = azurerm_route_server.tf-rs.id
+  route_server_id = module.route_server.id
   peer_asn = each.value.peer_asn
   peer_ip = each.value.peer_ip
 }
