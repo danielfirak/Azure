@@ -28,6 +28,20 @@ module route_server {
   tags = var.tags
 }
 
+module nic {
+  source = "./nic"
+  for_each = var.nics
+  name = each.key
+  rg_name = module.rg.name
+  location = module.rg.location
+  subnet_id = each.value.subnet_id
+  public_ip_address_id = module.pip[each.value.pip_key].id
+  nsg_id = each.value.nsg_id
+  enable_accelerated_networking = each.value.enable_accelerated_networking
+  tags = var.tags
+}
+
+
 #Create a virtual network and subnet for the route server
 resource "azurerm_virtual_network" "tf-rs-vnet" {
   name                = "df.tf-rs-vnet"

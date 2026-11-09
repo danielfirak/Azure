@@ -20,6 +20,16 @@ variable "tags" {
   default     = {}
 }
 
+variable "nics" {
+  description = "Network interfaces for the route server."
+  type        = map(object({
+    subnet_id = string
+    pip_key = string
+    nsg_id = string
+    enable_accelerated_networking = bool
+  }))
+}
+
 variable "route_server_name" {
   description = "Name of the route server."
   type        = string
