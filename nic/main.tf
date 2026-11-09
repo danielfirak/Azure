@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "this" {
   name                          = var.name
   location                      = var.location
-  resource_group_name           = var.resource_group_name
+  resource_group_name           = var.rg_name
   enable_accelerated_networking = var.enable_accelerated_networking
   network_security_group_id     = var.nsg_id
 
