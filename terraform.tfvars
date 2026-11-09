@@ -1,5 +1,5 @@
 #Resource group variables
-g_name = "df.tf-rg"
+rg_name = "df.tf-rg"
 location = "uksouth"
 
 #public ip variables name and location
