@@ -12,7 +12,6 @@ resource "azurerm_linux_virtual_machine" "this" {
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = var.os_disk_type
-    delete_option        = var.os_disk_delete_option
   }
 
   source_image_reference {

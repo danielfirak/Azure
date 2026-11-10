@@ -10,10 +10,6 @@ variable "admin_password" {
     }
 variable "network_interface_ids" { type = list(string) }
 variable "os_disk_type" { type = string }
-variable "os_disk_delete_option" { 
-    type = string 
-    default = "Delete"
-    }
 variable "security_type" { 
     type = string 
     default = "TrustedLaunch"
