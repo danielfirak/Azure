@@ -31,15 +31,16 @@ variable "nics" {
 }
 
 
-variable "router_name" {type =string}
-variable "router_vm_size" {type =string}
-variable "router_zone" {type =list (string)}
-variable "router_admin_username" {type =string}
+variable "router_name" {type = string }
+variable "router_vm_size" {type = string }
+variable "router_zone" {type = list (string) }
+variable "router_admin_username" {type = string }
 variable "router_admin_password" {
-  type =string
-  sensitive = true }
-variable "router_security_type" {type =string}
-variable "router_os_disk_type" {type =string}
+  type = string
+  sensitive = true
+  }
+variable "router_security_type" {type = string }
+variable "router_os_disk_type" {type = string }
 
 
 

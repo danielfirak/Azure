@@ -47,7 +47,7 @@ module cisco_8000v {
   rg_name = module.rg.name
   location = module.rg.location
   vm_size = var.router_vm_size
-  zone = var.router_zone
+  zones = var.router_zone
   admin_username = var.router_admin_username
   admin_password = var.router_admin_password
   security_type = var.router_security_type
