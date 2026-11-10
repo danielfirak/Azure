@@ -25,7 +25,7 @@ variable "nics" {
   type        = map(object({
     subnet_id = string
     pip_key = optional(string)
-    nsg_id = optiona(string)
+    nsg_id = optional(string)
     accelerated_networking_enabled = optional(bool, false)
   }))
 }
