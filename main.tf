@@ -41,6 +41,20 @@ module nic {
   tags = var.tags
 }
 
+module cisco_8000v {
+  source = "./cisco_8000v"
+  name = var.router_name
+  rg_name = module.rg.name
+  location = module.rg.location
+  vm_size = var.router_vm_size
+  zone = var.router_zone
+  admin_username = var.router_admin_username
+  admin_password = var.router_admin_password
+  security_type = var.router_security_type
+  os_disk_type = var.router_os_disk_type
+  nic_id = module.nic[each.value.nic_key].id
+  tags = var.tags
+}
 
 #Create a virtual network and subnet for the route server
 resource "azurerm_virtual_network" "tf-rs-vnet" {
