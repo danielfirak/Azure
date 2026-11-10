@@ -10,7 +10,7 @@ variable "public_ip_address_id" {
     type = string 
     default = null 
     }
-variable "enable_accelerated_networking" { 
+variable "accelerated_networking_enabled" { 
     type = bool
     default = false
     }
