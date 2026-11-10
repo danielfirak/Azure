@@ -26,7 +26,10 @@ variable "nics" {
     subnet_id = string
     pip_key = string
     nsg_id = string
-    accelerated_networking_enabled = bool
+    accelerated_networking_enabled = {
+      type = bool
+      default = false
+    }
   }))
 }
 
