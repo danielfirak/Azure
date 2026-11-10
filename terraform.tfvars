@@ -21,7 +21,7 @@ nics = {
 #router variables
 router_name = "df.tf-rtr2"
 router_vm_size = "Standard_B2s"
-router_zone = "3"
+router_zone = ["3"]
 router_admin_username = "sysadmin"
 router_admin_password = "Password123!"
 router_security_type = "Standard"
