@@ -35,7 +35,7 @@ module nic {
   rg_name = module.rg.name
   location = module.rg.location
   subnet_id = each.value.subnet_id
-  public_ip_address_id = module.pip[each.value.pip_key].id
+  public_ip_address_id = each.value.pip_key = null ? null: module.pip[each.value.pip_key].id
   nsg_id = each.value.nsg_id
   accelerated_networking_enabled = each.value.accelerated_networking_enabled
   tags = var.tags

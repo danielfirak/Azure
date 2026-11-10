@@ -24,12 +24,9 @@ variable "nics" {
   description = "Network interfaces for the route server."
   type        = map(object({
     subnet_id = string
-    pip_key = string
-    nsg_id = string
-    accelerated_networking_enabled = {
-      type = bool
-      default = false
-    }
+    pip_key = optional(string)
+    nsg_id = optiona(string)
+    accelerated_networking_enabled = optional(bool, false)
   }))
 }
 
