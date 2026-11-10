@@ -2,7 +2,7 @@ resource "azurerm_network_interface" "this" {
   name                          = var.name
   location                      = var.location
   resource_group_name           = var.rg_name
-  accelerated_networking_enabled = var.enable_accelerated_networking
+  accelerated_networking_enabled = var.accelerated_networking_enabled
   #network_security_group_id     = var.nsg_id
 
   ip_configuration {
