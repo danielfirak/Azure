@@ -52,7 +52,7 @@ module cisco_8000v {
   admin_password = var.router_admin_password
   security_type = var.router_security_type
   os_disk_type = var.router_os_disk_type
-  network_interface_ids = module.nic[each.value.nic_key].id
+  network_interface_ids = [for nic in var.router_nic_keys : module.nic[nic].id]
   tags = var.tags
 }
 

@@ -18,6 +18,16 @@ nics = {
       nsg_id = "/subscriptions/xxxx/resourceGroups/df.tf-rg/providers/Microsoft.Network/networkSecurityGroups/df.tf-nsg"
       }
 }
+#router variables
+router_name = "df.tf-rtr2"
+router_vm_size = "Standard_B2s"
+router_zone = "3"
+router_admin_username = "sysadmin"
+router_admin_password = "Password123!"
+router_security_type = "Standard"
+router_os_disk_type = "StandardSSD_LRS"
+router_nic_keys   = ["tf-rtr2-nic1", "tf-rtr2-nic2"]
+
 
 #Route server variables name and BGP peers
 route_server_name = "df.tf-rs"

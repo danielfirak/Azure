@@ -18,7 +18,6 @@ variable "security_type" {
     type = string 
     default = "TrustedLaunch"
     }
-variable "enable_periodic_assessment" { type = string }
 variable "hibernation_enabled" { 
     type = bool
     default = false
