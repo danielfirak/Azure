@@ -3,7 +3,7 @@ resource "azurerm_network_interface" "this" {
   location                      = var.location
   resource_group_name           = var.rg_name
   accelerated_networking_enabled = var.enable_accelerated_networking
-  network_security_group_id     = var.nsg_id
+  #network_security_group_id     = var.nsg_id
 
   ip_configuration {
     name                          = "ipconfig1"
@@ -14,4 +14,9 @@ resource "azurerm_network_interface" "this" {
   }
 
   tags = var.tags
+}
+
+resource "azurerm_network_interface_security_group_association" "this" {
+  network_interface_id      = azurerm_network_interface.this.id
+  network_security_group_id = var.nsg_id
 }
